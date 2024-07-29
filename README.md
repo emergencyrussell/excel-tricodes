@@ -14,14 +14,16 @@ Utilizes Python's pseudo-random generation to randomize pairings and asks for a 
 
 For secure usage, it is recommended to generate the seed, the pairings, and print the codebook pairs using air-gapped hardware.
 
+## Compiling
+
 Binary compiled with PyInstaller. To compile yourself:
 
-## Install PyInstaller
+### Install PyInstaller
 
 Enter into command line:
 
 `pip install pyinstaller`
 
-## Run PyInstaller on excel-tricodes.py
+### Run PyInstaller on excel-tricodes.py
 
 `pyinstaller --onefile /path/to/excel-tricodes.py`
