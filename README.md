@@ -24,4 +24,4 @@ Enter into command line:
 
 ## Run PyInstaller on excel-tricodes.py
 
-`pyinstaller --one-file /path/to/excel-tricodes.py`
+`pyinstaller --onefile /path/to/excel-tricodes.py`
