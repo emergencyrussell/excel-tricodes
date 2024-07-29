@@ -13,3 +13,15 @@ The script needs two text files with exact naming (files included):
 Utilizes Python's pseudo-random generation to randomize pairings and asks for a seed before shuffling. Refraining from entering a seed defaults it to zero. Hardware randomization can be pasted as the seed to increase security. For example, an ESP32 can be programmed to generate true random numbers into the Arduino IDE's Serial Monitor, which can then be copied and pasted into the seed field.
 
 For secure usage, it is recommended to generate the seed, the pairings, and print the codebook pairs using air-gapped hardware.
+
+Binary compiled with PyInstaller. To compile yourself:
+
+## Install PyInstaller
+
+Enter into command line:
+
+`pip install pyinstaller`
+
+## Run PyInstaller on excel-tricodes.py
+
+`pyinstaller --one-file /path/to/excel-tricodes.py`
