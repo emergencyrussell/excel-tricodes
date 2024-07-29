@@ -2,7 +2,7 @@
 
 ## *Output the random pairings between two textfiles to .xlsx files*
 
-### Based on NC Scout's book, *The Guerrilla's Guide to Baofeng Radio*
+##### Based on NC Scout's book, *The Guerrilla's Guide to Baofeng Radio*
 
 #### Using the [OpenOTP32](https://github.com/emergencyrussell/OpenOTP32) just got a whole lot more efficient! :)
 
