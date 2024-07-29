@@ -33,3 +33,5 @@ Enter into command line:
 ### Run PyInstaller on excel-tricodes.py
 
 `pyinstaller --onefile /path/to/excel-tricodes.py`
+
+Note that you will still need the two text files in the same directory or the binary will abort with an error.
