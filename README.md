@@ -18,9 +18,13 @@ For secure usage, it is recommended to generate the seed, the pairings, and prin
 
 Binary compiled with PyInstaller. To compile yourself:
 
-### Install PyInstaller
+### Ensure pip is installed
 
 Enter into command line:
+
+`python -m ensurepip`
+
+### Install PyInstaller
 
 `pip install pyinstaller`
 
