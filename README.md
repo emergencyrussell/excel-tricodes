@@ -28,15 +28,21 @@ Binary processed using PyInstaller. To make it yourself:
 
 Enter into command line:
 
-`python -m ensurepip`
+```
+python -m ensurepip
+```
 
 ### Install PyInstaller
 
-`pip install pyinstaller`
+```
+pip install pyinstaller
+```
 
 ### Run PyInstaller on excel-tricodes.py
 
-`pyinstaller --onefile /path/to/excel-tricodes.py`
+```
+pyinstaller --onefile /path/to/excel-tricodes.py
+```
 
 Note that you will still need the two text files in the same directory or the binary will abort with an error.
 
