@@ -14,9 +14,9 @@ The script needs two text files with exact naming (files included):
 
 Utilizes Python's pseudo-random generation to randomize pairings and asks for a seed before shuffling. Refraining from entering a seed defaults it to zero. Hardware randomization can be pasted as the seed to increase security. For example, an ESP32 can be programmed to generate true random numbers into the Arduino IDE's Serial Monitor, which can then be copied and pasted into the seed field.
 
-## Compiling
+## Making a portable EXE file
 
-Binary compiled with PyInstaller. To compile yourself:
+Binary processed using PyInstaller. To make it yourself:
 
 ### Ensure pip is installed
 
