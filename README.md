@@ -6,7 +6,7 @@
 
 #### *(Using the [OpenOTP32](https://github.com/emergencyrussell/OpenOTP32) just got a whole lot more efficient!)*
 
-The script needs two text files with exact naming (files included):
+The script needs two text files with exact filenames (files included):
 
 - First, **trigrams.txt**, consisting of all possible trigrams in the English alphabet, separated by line, reserving ZZZ to signify the end of a message.
 
