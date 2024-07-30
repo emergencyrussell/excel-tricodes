@@ -12,14 +12,10 @@ The script needs two text files with exact filenames (files included):
 
 - Second, **codedwords.txt**, consisting of the words presented in the sample codebook in *The Guerrilla's Guide,* , also separated by line.
 
-You'll need to install some Python libraries:
+Script uses the OpenPyXL library, which you may need to install:
 
 ```
-import pandas as pd
-import random
-from openpyxl import Workbook
-from openpyxl.styles import Font
-from openpyxl.utils import get_column_letter
+pip install openpyxl
 ```
 
 Utilizes Python's pseudo-random generation to randomize pairings and asks for a seed before shuffling. Refraining from entering a seed defaults it to zero. Hardware randomization can be pasted as the seed to increase security. For example, an ESP32 can be programmed to generate true random numbers into the Arduino IDE's Serial Monitor, which can then be copied and pasted into the seed field.
