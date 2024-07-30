@@ -1,6 +1,6 @@
 # XLSX Trigram Codebook Generator
 
-## *Output the random pairings between two text files to two seperately alphabetized .XLSX files*
+## *Output random pairings between two text files into two seperately alphabetized .XLSX files*
 
 ##### Based on NC Scout's book, *The Guerrilla's Guide to Baofeng Radio.*
 
