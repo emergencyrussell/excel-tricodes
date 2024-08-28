@@ -22,13 +22,47 @@ Utilizes Python's pseudo-random generation to randomize pairings and asks for a 
 
 ## Executing the Script
 
-e.g.
+e.g. (in command prompt)
 
 ```
 python excel-tricodes.py 10
 ```
 
 Generates a spreadsheet consisting of ten encode/decode sheet pairs.
+
+## Running the EXE
+
+e.g. (in command prompt)
+
+```
+excel-tricodes 10
+```
+
+## Making a portable EXE file
+
+Binary processed using PyInstaller. To make it yourself:
+
+### Ensure pip is installed
+
+Enter into command line:
+
+```
+python -m ensurepip
+```
+
+### Install PyInstaller
+
+```
+pip install pyinstaller
+```
+
+### Run PyInstaller on excel-tricodes.py
+
+```
+pyinstaller --onefile /path/to/excel-tricodes.py
+```
+
+Note that you will still need the two text files in the same directory or the binary will abort with an error.
 
 ## Usage
 
