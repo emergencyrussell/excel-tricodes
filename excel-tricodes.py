@@ -1,5 +1,5 @@
-import pandas as pd
 import random
+import sys
 from openpyxl import Workbook
 from openpyxl.styles import Font
 from openpyxl.utils import get_column_letter
@@ -18,41 +18,26 @@ if seed:
 else:
     random.seed(0)
 
-# Step 2: Randomly pair elements from list1 and list2
-indices1 = random.sample(range(len(list1)), len(list1))
-indices2 = random.sample(range(len(list2)), len(list2))
+# Set the number of encode/decode pairs based on command-line argument
+if len(sys.argv) > 1:
+    try:
+        num_pairs = int(sys.argv[1])
+    except ValueError:
+        print("Invalid input. Please enter a number.")
+        sys.exit(1)
+else:
+    num_pairs = 1  # Default number of pairs
 
-pairs = list(zip(
-    (list1[i] for i in indices1),
-    (list2[i] for i in indices2)
-))
-
-# Truncate the pairs to match the length of the shorter list
-min_length = min(len(list1), len(list2))
-pairs = pairs[:min_length]
-
-# Set the number of pairs in a chunk and the number of horizontal chunks
-pairs_per_chunk = 5
-horizontal_chunks = 3
-
-# Function to write pairs to Excel in the specified format
-def write_pairs_to_excel(pairs, filename, sort_key):
-    wb = Workbook()
-    ws = wb.active
-
-    # Define the monospaced font
-    font = Font(name='Courier New', b=True, sz=10.1)
-
-    # Sort pairs based on the specified key
+# Function to write pairs to an Excel sheet
+def write_pairs_to_excel(ws, pairs, sort_key, font):
     pairs = sorted(pairs, key=sort_key)
-    
     chunk_size = pairs_per_chunk * horizontal_chunks
     row_offset = 0
     for start_idx in range(0, len(pairs), chunk_size):  # Process by chunk_size
         chunk_pairs = pairs[start_idx:start_idx + chunk_size]
 
         for j in range(horizontal_chunks):  # Number of horizontal chunks
-            column_pairs = chunk_pairs[j*pairs_per_chunk:(j+1)*pairs_per_chunk]
+            column_pairs = chunk_pairs[j * pairs_per_chunk:(j + 1) * pairs_per_chunk]
 
             for i, pair in enumerate(column_pairs):
                 col_base = j * 2 + 1
@@ -60,7 +45,7 @@ def write_pairs_to_excel(pairs, filename, sort_key):
                 cell2 = ws.cell(row=row_offset + i + 1, column=col_base + 1, value=pair[1])
                 cell1.font = font
                 cell2.font = font
-        
+
         row_offset += pairs_per_chunk + 1  # Move to the next block of pairs_per_chunk rows (plus one blank row)
 
     # Autofit columns
@@ -73,10 +58,40 @@ def write_pairs_to_excel(pairs, filename, sort_key):
         adjusted_width = max_length + 2
         ws.column_dimensions[col_letter].width = adjusted_width
 
-    wb.save(filename)
+# Initialize workbook
+wb = Workbook()
+font = Font(name='Courier New', b=True, sz=10.1)
 
-# Step 3: Write pairs sorted alphabetically by file1
-write_pairs_to_excel(pairs, 'tricodes-decode.xlsx', lambda x: x[0].lower())
+# Set the number of pairs in a chunk and the number of horizontal chunks
+pairs_per_chunk = 5
+horizontal_chunks = 3
 
-# Step 4: Write pairs sorted alphabetically by file2
-write_pairs_to_excel(pairs, 'tricode-encode.xlsx', lambda x: x[1].lower())
+# Create specified number of sheet pairs
+for pair_num in range(num_pairs):
+    # Randomly pair elements from list1 and list2 for each pair of sheets
+    indices1 = random.sample(range(len(list1)), len(list1))
+    indices2 = random.sample(range(len(list2)), len(list2))
+
+    pairs = list(zip(
+        (list1[i] for i in indices1),
+        (list2[i] for i in indices2)
+    ))
+
+    # Truncate the pairs to match the length of the shorter list
+    min_length = min(len(list1), len(list2))
+    pairs = pairs[:min_length]
+
+    # Create Encode sheet
+    encode_sheet = wb.create_sheet(title=f'Encode {pair_num + 1}')
+    write_pairs_to_excel(encode_sheet, pairs, lambda x: x[0].lower(), font)
+
+    # Create Decode sheet
+    decode_sheet = wb.create_sheet(title=f'Decode {pair_num + 1}')
+    write_pairs_to_excel(decode_sheet, pairs, lambda x: x[1].lower(), font)
+
+# Remove the default sheet created by Workbook()
+if 'Sheet' in wb.sheetnames:
+    wb.remove(wb['Sheet'])
+
+# Save the workbook
+wb.save('tricodes.xlsx')

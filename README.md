@@ -18,33 +18,17 @@ Script uses the OpenPyXL library, which you may need to install:
 pip install openpyxl
 ```
 
-Utilizes Python's pseudo-random generation to randomize pairings and asks for a seed before shuffling. Refraining from entering a seed defaults it to zero. Hardware randomization can be pasted as the seed to increase security. For example, an ESP32 can be programmed to generate true random numbers into the Arduino IDE's Serial Monitor, which can then be copied and pasted into the seed field.
+Utilizes Python's pseudo-random generation to randomize pairings and asks for a seed before shuffling. Refraining from entering a seed defaults it to zero. Hardware randomization can be entered in as the seed to increase security. For example, an ESP32 can be programmed to generate true random numbers into the Arduino IDE's Serial Monitor, which can then be copied and pasted into the seed prompt.
 
-## Making a portable EXE file
+## Executing the Script
 
-Binary processed using PyInstaller. To make it yourself:
-
-### Ensure pip is installed
-
-Enter into command line:
+e.g.
 
 ```
-python -m ensurepip
+python excel-tricodes.py 10
 ```
 
-### Install PyInstaller
-
-```
-pip install pyinstaller
-```
-
-### Run PyInstaller on excel-tricodes.py
-
-```
-pyinstaller --onefile /path/to/excel-tricodes.py
-```
-
-Note that you will still need the two text files in the same directory or the binary will abort with an error.
+Generates a spreadsheet consisting of ten encode/decode sheet pairs.
 
 ## Usage
 
