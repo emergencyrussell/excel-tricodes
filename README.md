@@ -2,7 +2,7 @@
 
 ## *Output random pairings between two text files into a single .XLSX file, iterated n-number of times into numbered encode/decode sheet pairs*
 
-##### Based on NC Scout's book, *The Guerrilla's Guide to Baofeng Radio.*
+##### Based on NC Scout's book, [*The Guerrilla's Guide to Baofeng Radio.*](https://brushbeater.store/products/the-guerrillas-guide-to-the-baofeng-radio-authors-verison)
 
 #### *(Using the [OpenOTP32](https://github.com/emergencyrussell/OpenOTP32) just got a whole lot more efficient!)*
 
